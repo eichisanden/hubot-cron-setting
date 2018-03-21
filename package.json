@@ -12,7 +12,9 @@
   "bugs": {
     "url": "https://github.com/eichisanden/hubot-setting/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "pug": "^2.0.3"
+  },
   "peerDependencies": {
     "hubot": "2.x"
   },

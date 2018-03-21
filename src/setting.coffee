@@ -14,6 +14,8 @@
 # Author:
 #   eichisanden <eichisanden@gmail.com>
 
+path = require 'path'
+
 module.exports = (robot) ->
   robot.respond /hello/, (res) ->
     res.reply "hello!"
@@ -21,6 +23,8 @@ module.exports = (robot) ->
   robot.hear /orly/, (res) ->
     res.send "yarly"
 
+  robot.router.set 'views', path.join(__dirname, 'views');
+  robot.router.set 'view engine', 'pug'
   robot.router.get "/setting", (req, res) ->
-    res.send('Hello World!')
+    res.render 'index', title: 'hubot-setting'
 
