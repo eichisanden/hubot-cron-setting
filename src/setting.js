@@ -26,8 +26,10 @@ module.exports = (robot) => {
     res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
   });
   robot.router.get("/save", (req, res) => {
-    robot.receive(new TextMessage({name: 'eichisanden', room: 'town-square'}, robot.name + " new job 0 9 * * 1-5 \"Good morning everyone!\""));
-    res.render('index', { title: 'hubot-setting' });
+    const msg = new TextMessage({name: 'eichisanden', room: 'town-square'}, robot.name + " new job 0 9 * * 1-5 \"Good morning everyone!\"");
+    console.log(msg);
+    robot.receive(msg);
+    res.render('index', { title: 'hubot-setting', data: msg });
   });
 };
 
