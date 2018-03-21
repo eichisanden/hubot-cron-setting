@@ -20,3 +20,7 @@ module.exports = (robot) ->
 
   robot.hear /orly/, (res) ->
     res.send "yarly"
+
+  robot.router.get "/setting", (req, res) ->
+    res.send('Hello World!')
+
