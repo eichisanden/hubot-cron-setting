@@ -21,6 +21,7 @@ module.exports = (robot) => {
   robot.router.set('view engine', 'pug');
   robot.router.get("/setting", (req, res) => {
     const data = robot.brain.data.cronjob;
+    console.log(data);
     res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
   });
 };
