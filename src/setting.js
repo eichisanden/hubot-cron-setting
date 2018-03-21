@@ -20,7 +20,8 @@ module.exports = (robot) => {
   robot.router.set('views', path.join(__dirname, '..', 'views'));
   robot.router.set('view engine', 'pug');
   robot.router.get("/setting", (req, res) => {
-    res.render('index', { title: 'hubot-setting' });
+    const data = robot.brain.data.cronjob;
+    res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
   });
 };
 
