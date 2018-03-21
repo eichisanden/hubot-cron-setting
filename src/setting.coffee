@@ -23,7 +23,7 @@ module.exports = (robot) ->
   robot.hear /orly/, (res) ->
     res.send "yarly"
 
-  robot.router.set 'views', path.join(__dirname, 'views');
+  robot.router.set 'views', path.join(__dirname, '..', 'views');
   robot.router.set 'view engine', 'pug'
   robot.router.get "/setting", (req, res) ->
     res.render 'index', title: 'hubot-setting'
