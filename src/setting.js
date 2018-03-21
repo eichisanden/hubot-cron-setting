@@ -15,6 +15,7 @@
 //   eichisanden <eichisanden@gmail.com>
 
 const path = require('path');
+const TextMessage = require('hubot').TextMessage;
 
 module.exports = (robot) => {
   robot.router.set('views', path.join(__dirname, '..', 'views'));
@@ -23,6 +24,10 @@ module.exports = (robot) => {
     const data = robot.brain.data.cronjob;
     console.log(data);
     res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
+  });
+  robot.router.get("/save", (req, res) => {
+    robot.receive(new TextMessage({name: 'eichisanden', room: 'town-square'}, robot.name + " new job 0 9 * * 1-5 \"Good morning everyone!\""));
+    res.render('index', { title: 'hubot-setting' });
   });
 };
 
