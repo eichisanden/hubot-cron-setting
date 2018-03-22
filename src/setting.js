@@ -24,8 +24,14 @@ module.exports = (robot) => {
 
   robot.router.get("/setting", (req, res) => {
     const data = robot.brain.data.cronjob;
-    console.log(data);
-    res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
+    let content = "";
+    for (let d in data) {
+      content += "<div>" + data[d][0] + "</div>"
+      content += "<div>" + data[d][1].room + "</div>"
+      content += "<div>" + data[d][2] + "</div>"
+
+    }
+    res.render('index', { title: 'hubot-setting', data: content });
   });
 
   robot.router.get("/new-cron", (req, res) => {
