@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div.left.row
+    a.link(href="/") Top
+  form(method="post", action="/new-cron")
+    div.center.row
+      input.txt(type="text", name="pattern")
+    div.center.row
+      input.txt(type="text", name="message")
+    div.center.row
+      input.txt(type="text", name="room")
+    div.center.row
+      input.btn(type="submit", value="Save")
+
