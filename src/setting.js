@@ -18,19 +18,20 @@ const path = require('path');
 const TextMessage = require('hubot').TextMessage;
 const User = require('hubot').User;
 
-process.env.EXPRESS_STATIC = path.join(__dirname, '..', 'public');
-
 module.exports = (robot) => {
   robot.router.set('views', path.join(__dirname, '..', 'views'));
   robot.router.set('view engine', 'pug');
+
   robot.router.get("/setting", (req, res) => {
     const data = robot.brain.data.cronjob;
     console.log(data);
     res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
   });
+
   robot.router.get("/new-cron", (req, res) => {
     res.render('new', { title: 'hubot-setting' });
   });
+
   robot.router.post("/new-cron", (req, res) => {
     const dummyId = 999;
     const user = new User(dummyId);
