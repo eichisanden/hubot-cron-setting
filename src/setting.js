@@ -16,6 +16,7 @@
 
 const path = require('path');
 const TextMessage = require('hubot').TextMessage;
+const User = require('hubot').User;
 
 module.exports = (robot) => {
   robot.router.set('views', path.join(__dirname, '..', 'views'));
@@ -26,7 +27,10 @@ module.exports = (robot) => {
     res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
   });
   robot.router.get("/save", (req, res) => {
-    const msg = new TextMessage({name: 'eichisanden', room: 'town-square'}, robot.name + " new job 0 9 * * 1-5 \"Good morning everyone!\"");
+    const user = new User();
+    user.name = 'eichisanden';
+    user.room = 'town-square';
+    const msg = new TextMessage(user, robot.name + " new job 0 9 * * 1-5 \"Good morning everyone!\"");
     console.log(msg);
     robot.receive(msg);
     res.render('index', { title: 'hubot-setting', data: msg });
