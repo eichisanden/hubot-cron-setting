@@ -27,7 +27,7 @@ module.exports = (robot) => {
     res.render('index', { title: 'hubot-setting', data: JSON.stringify(data) });
   });
   robot.router.get("/save", (req, res) => {
-    const user = new User();
+    const user = new User(999);
     user.name = 'eichisanden';
     user.room = 'town-square';
     const msg = new TextMessage(user, robot.name + " new job 0 9 * * 1-5 \"Good morning everyone!\"");
