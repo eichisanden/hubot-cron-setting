@@ -34,13 +34,15 @@ module.exports = (robot) => {
   robot.router.post("/new-cron", (req, res) => {
     const dummyId = 999;
     const user = new User(dummyId);
-    user.name = 'eichisanden';
+    user.name = 'anoymous';
     user.room = req.body.room;
     const pattern = req.body.pattern;
     const message = req.body.message;
     const msg = new TextMessage(user, `${robot.name} new job ${pattern} "${message}"`, dummyId);
     robot.receive(msg);
-    res.render('index', { title: 'hubot-setting', data: msg });
+
+    const data = robot.brain.data.cronjob;
+    res.render('index', { title: 'hubot-setting', data: data });
   });
 };
 

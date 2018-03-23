@@ -2,14 +2,20 @@ extends layout
 
 block content
   div.left.row
-    a.link(href="/") Top
+    a.link(href="/setting") Top
   form(method="post", action="/new-cron")
+    div.row
+      span Pattern
     div.center.row
       input.txt(type="text", name="pattern")
-    div.center.row
-      input.txt(type="text", name="message")
+    div.row
+      span Room
     div.center.row
       input.txt(type="text", name="room")
+    div.row
+      span Message
+    div.center.row
+      input.txt(type="text", name="message")
     div.center.row
       input.btn(type="submit", value="Save")
 

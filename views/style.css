@@ -19,6 +19,7 @@ input {
   border: solid 1px #00B7FF;
   padding: 5px 30px 5px 30px;
   text-decoration: none;
+  margin-bottom: 15px;
 }
 
 .left {
@@ -39,4 +40,19 @@ input {
 
 .link {
   font-size: 2em;
+}
+
+table {
+  font-size: 2em;
+  border: solid 1px #00B7FF;
+  border-collapse: collapse;
+}
+
+th,td {
+  padding: 10px;
+  border: solid 1px #00B7FF;
+}
+
+td {
+  text-align: left;
 }
