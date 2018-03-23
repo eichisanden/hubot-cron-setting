@@ -4,5 +4,15 @@ block content
   h1= title
   div.center.row
     button.btn(onClick="location.href='/new-cron'") new
-  div= data
-
+    table
+      tr
+        th Pattern
+        th Room
+        th Message
+        th Created by
+      eachi val, index in data
+        tr
+          td val[0]
+          td val[1].room
+          td val[2]
+          td val[1].name
