@@ -22,16 +22,16 @@ module.exports = (robot) => {
   robot.router.set('views', path.join(__dirname, '..', 'views'));
   robot.router.set('view engine', 'pug');
 
-  robot.router.get("/setting", (req, res) => {
+  robot.router.get("/hubot-cron-setting", (req, res) => {
     const data = robot.brain.data.cronjob;
-    res.render('index', { title: 'hubot-setting', data: data });
+    res.render('index', { title: 'hubot-cron-setting', data: data });
   });
 
-  robot.router.get("/new-cron", (req, res) => {
-    res.render('new', { title: 'hubot-setting' });
+  robot.router.get("/hubot-cron-setting/new", (req, res) => {
+    res.render('new', { title: 'hubot-cron-setting' });
   });
 
-  robot.router.post("/new-cron", (req, res) => {
+  robot.router.post("/hubot-cron-setting/new", (req, res) => {
     const dummyId = 999;
     const user = new User(dummyId);
     user.name = 'anoymous';
@@ -41,8 +41,22 @@ module.exports = (robot) => {
     const msg = new TextMessage(user, `${robot.name} new job ${pattern} "${message}"`, dummyId);
     robot.receive(msg);
 
-    const data = robot.brain.data.cronjob;
-    res.render('index', { title: 'hubot-setting', data: data });
+    setTimeout(() => {
+      res.redirect('/hubot-cron-setting');
+    }, 1000);
+  });
+
+  robot.router.get("/hubot-cron-setting/del", (req, res) => {
+    const dummyId = 999;
+    const user = new User(dummyId);
+    user.name = 'anoymous';
+    const id = req.query.id;
+    const msg = new TextMessage(user, `${robot.name} rm job ${id}`, dummyId);
+    robot.receive(msg);
+
+    setTimeout(() => {
+      res.redirect('/hubot-cron-setting');
+    }, 1000);
   });
 };
 

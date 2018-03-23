@@ -1,17 +1,21 @@
 extends layout
 
 block content
-  h1= title
+  h1.title= title
+  div.left.row
+    button.btn.btn-large(onClick="location.href='/hubot-cron-setting/new'") new  
   div.center.row
-    button.btn(onClick="location.href='/new-cron'") new
     table
       tr
+        th
         th Pattern
         th Room
         th Message
         th Created by
       each val, index in data
         tr
+          td
+            button.btn.btn-small(onClick=`location.href='/hubot-cron-setting/del?id=${index}'`) del
           td #{val[0]}
           td #{val[1].room}
           td #{val[2]}

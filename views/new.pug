@@ -2,20 +2,20 @@ extends layout
 
 block content
   div.left.row
-    a.link(href="/setting") Top
-  form(method="post", action="/new-cron")
+    a.link(href="/hubot-cron-setting") back
+  form(method="post", action="/hubot-cron-setting/new")
     div.row
-      span Pattern
+      span.label Pattern
     div.center.row
       input.txt(type="text", name="pattern")
     div.row
-      span Room
+      span.label Room
     div.center.row
       input.txt(type="text", name="room")
     div.row
-      span Message
+      span.label Message
     div.center.row
       input.txt(type="text", name="message")
     div.center.row
-      input.btn(type="submit", value="Save")
+      input.btn.btn-large(type="submit", value="Save")
 
